@@ -1,0 +1,1 @@
+C:\Users\user\AndroidStudioProjects\yolov8ncnn\app\build\intermediates\cxx\Debug\56rhxw6r\obj\x86

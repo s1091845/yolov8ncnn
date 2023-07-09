@@ -1,0 +1,3 @@
+C:/Users/user/AndroidStudioProjects/yolov8ncnn/app/.cxx/cmake/debug/x86/CMakeFiles/yolov8ncnn.dir
+C:/Users/user/AndroidStudioProjects/yolov8ncnn/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+C:/Users/user/AndroidStudioProjects/yolov8ncnn/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
