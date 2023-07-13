@@ -140,7 +140,8 @@ static void generate_grids_and_stride(const int target_w, const int target_h, st
 static void generate_proposals(std::vector<GridAndStride> grid_strides, const ncnn::Mat& pred, float prob_threshold, std::vector<Object>& objects)
 {
     const int num_points = grid_strides.size();
-    const int num_class = 80;
+//    const int num_class = 80;
+    const int num_class = 7;
     const int reg_max_1 = 16;
 
     for (int i = 0; i < num_points; i++)
@@ -248,8 +249,10 @@ int Yolo::load(AAssetManager* mgr, const char* modeltype, int _target_size, cons
     char modelpath[256];
 //    sprintf(parampath, "yolov8%s.param", modeltype);
 //    sprintf(modelpath, "yolov8%s.bin", modeltype);
-    sprintf(parampath, "best-opt-fp16.param", modeltype);
-    sprintf(modelpath, "best-opt-fp16.bin", modeltype);
+//    sprintf(parampath, "best-opt-fp16.param", modeltype);
+//    sprintf(modelpath, "best-opt-fp16.bin", modeltype);
+    sprintf(parampath, "best-sim-opt-fp16.param", modeltype);
+    sprintf(modelpath, "best-sim-opt-fp16.bin", modeltype);
 
     yolo.load_param(mgr, parampath);
     yolo.load_model(mgr, modelpath);
@@ -302,15 +305,21 @@ int Yolo::detect(const cv::Mat& rgb, std::vector<Object>& objects, float prob_th
     ex.input("images", in_pad);
 
     std::vector<Object> proposals;
-    
+
+    // run net and get output
+//    ncnn::Mat out, out1;
     ncnn::Mat out;
     // "output"
-    ex.extract("501", out);
+//    ex.extract("501", out);
+//    ex.extract("503", out1);
+    ex.extract("output0", out);
+//    ex.extract("433", out);
 
     std::vector<int> strides = {8, 16, 32}; // might have stride=64
     std::vector<GridAndStride> grid_strides;
     generate_grids_and_stride(in_pad.w, in_pad.h, strides, grid_strides);
     generate_proposals(grid_strides, out, prob_threshold, proposals);
+//    generate_proposals(grid_strides, out1, prob_threshold, proposals);
 
     // sort all proposals by score from highest to lowest
     qsort_descent_inplace(proposals);
