@@ -1,8 +1,0 @@
-com.tencent.yolov8ncnn:string/app_name = 0x7f040000
-com.tencent.yolov8ncnn:id/spinnerModel = 0x7f020003
-com.tencent.yolov8ncnn:id/spinnerCPUGPU = 0x7f020002
-com.tencent.yolov8ncnn:id/buttonSwitchCamera = 0x7f020000
-com.tencent.yolov8ncnn:array/model_array = 0x7f010001
-com.tencent.yolov8ncnn:layout/main = 0x7f030000
-com.tencent.yolov8ncnn:id/cameraview = 0x7f020001
-com.tencent.yolov8ncnn:array/cpugpu_array = 0x7f010000
