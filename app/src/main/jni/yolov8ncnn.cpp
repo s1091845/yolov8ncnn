@@ -183,8 +183,10 @@ JNIEXPORT jboolean JNICALL Java_com_tencent_yolov8ncnn_Yolov8Ncnn_loadModel(JNIE
 
     const char* modeltypes[] =
     {
-        "n",
-        "s",
+//        "n",
+//        "s",
+        "-sim-opt-fp16",
+        "-sim-opt",
     };
 
     const int target_sizes[] =

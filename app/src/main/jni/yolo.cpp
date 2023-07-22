@@ -251,8 +251,8 @@ int Yolo::load(AAssetManager* mgr, const char* modeltype, int _target_size, cons
 //    sprintf(modelpath, "yolov8%s.bin", modeltype);
 //    sprintf(parampath, "best-opt-fp16.param", modeltype);
 //    sprintf(modelpath, "best-opt-fp16.bin", modeltype);
-    sprintf(parampath, "best-sim-opt-fp16.param", modeltype);
-    sprintf(modelpath, "best-sim-opt-fp16.bin", modeltype);
+    sprintf(parampath, "best%s.param", modeltype);
+    sprintf(modelpath, "best%s.bin", modeltype);
 
     yolo.load_param(mgr, parampath);
     yolo.load_model(mgr, modelpath);
