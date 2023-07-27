@@ -47,11 +47,11 @@ https://github.com/nihui/opencv-mobile
 * FPS may be lower in dark environment because of longer camera exposure time
 
 ## screenshot
-![](screenshot.png)
+![](./docs/screenshot.png)
 
 ## Reference：  
 https://github.com/nihui/ncnn-android-nanodet  
 https://github.com/Tencent/ncnn  
 https://github.com/ultralytics/assets/releases/tag/v0.0.0
 
-![](我是梗圖_0718.png)
+![](./docs/我是梗圖_0718.png)
