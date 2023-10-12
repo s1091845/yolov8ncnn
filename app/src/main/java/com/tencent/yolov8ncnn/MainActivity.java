@@ -34,6 +34,8 @@ import android.widget.Spinner;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import android.widget.TextView;
+
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -172,12 +174,18 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
 
     public void openWebsite(View view) {
         // 定義您要訪問的網站 URL   這裡開網站
-        String websiteUrl = "https://www.google.com.tw/?hl=zh_TW"; // 將此替換為您的網站 URL
+        String websiteUrl = "http://120.110.114.80:9880/" + getLabel(); // 將此替換為您的網站 URL
 
         // 創建一個 Intent 來打開網頁瀏覽器
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
 
         // 啟動瀏覽器
         startActivity(intent);
+    }
+
+    public native String getLabel();
+
+    static {
+        System.loadLibrary("yolov8ncnn");
     }
 }
