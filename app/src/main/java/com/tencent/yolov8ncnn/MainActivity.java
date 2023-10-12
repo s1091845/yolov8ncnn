@@ -16,8 +16,10 @@ package com.tencent.yolov8ncnn;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
@@ -32,12 +34,21 @@ import android.widget.Spinner;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import android.widget.TextView;
+
+import android.os.Bundle;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
+
+
 public class MainActivity extends Activity implements SurfaceHolder.Callback
 {
     public static final int REQUEST_CAMERA = 100;
 
     private Yolov8Ncnn yolov8ncnn = new Yolov8Ncnn();
-//    private int facing = 0;
+    //    private int facing = 0;
     private int facing = 1;
 
     private Spinner spinnerModel;
@@ -53,6 +64,12 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        // 找到TextView元素
+//        TextView textViewVariable = findViewById(R.id.textViewVariable);
+
+        // 設置TextView的文本為變數的值
+//        textViewVariable.setText(getLabel());
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -73,6 +90,12 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
                 yolov8ncnn.openCamera(new_facing);
 
                 facing = new_facing;
+
+                // 找到TextView元素
+//                TextView textViewVariable = findViewById(R.id.textViewVariable);
+
+                // 設置TextView的文本為變數的值
+//                textViewVariable.setText(getLabel());
             }
         });
 
@@ -80,7 +103,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
         spinnerModel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
-            {
+            {    spinnerModel.setVisibility(View.GONE);
                 if (position != current_model)
                 {
                     current_model = position;
@@ -98,7 +121,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
         spinnerCPUGPU.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
-            {
+            {      spinnerCPUGPU.setVisibility(View.GONE);
                 if (position != current_cpugpu)
                 {
                     current_cpugpu = position;
@@ -159,5 +182,22 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
         super.onPause();
 
         yolov8ncnn.closeCamera();
+    }
+
+    public void openWebsite(View view) {
+        // 定義您要訪問的網站 URL   這裡開網站
+        String websiteUrl = "http://120.110.114.80:9880/" + getLabel(); // 將此替換為您的網站 URL
+
+        // 創建一個 Intent 來打開網頁瀏覽器
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
+
+        // 啟動瀏覽器
+        startActivity(intent);
+    }
+
+    public native String getLabel();
+
+    static {
+        System.loadLibrary("yolov8ncnn");
     }
 }
