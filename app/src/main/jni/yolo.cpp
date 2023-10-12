@@ -11,6 +11,9 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
+#include <jni.h>
+#include <string>
+#include <cstring>
 
 #include "yolo.h"
 
@@ -18,6 +21,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 
 #include "cpu.h"
+
+const char *current_label;
 
 static float fast_exp(float x)
 {
@@ -425,6 +430,33 @@ int Yolo::draw(cv::Mat& rgb, const std::vector<Object>& objects)
         char text[256];
         sprintf(text, "%s %.1f%%", class_names[obj.label], obj.prob * 100);
 
+        current_label = class_names[obj.label];
+
+        // 将当前类名存储到私有成员变量
+//        current_class_name = class_names[obj.label];
+
+        // 使用 JNI 将类名传递给 MainActivity.java
+//        JNIEnv* env; // 获取 JNIEnv
+        // 假设 mainActivityObject 和 receiveClassNameMethod 有效
+//        jstring jClassName = env->NewStringUTF(current_class_name);
+//        env->CallVoidMethod(MainActivity, receiveClassNameMethod, jClassName);
+//        env->DeleteLocalRef(jClassName);
+
+//        JNIEnv* javaEnv; // 存储 JNIEnv
+//        jobject mainActivityObject; // 存储 MainActivity 对象引用
+//        jmethodID receiveClassNameMethod; // 存储 receiveClassName 方法的 ID
+
+        // 使用 JNI 将类名传递给 MainActivity.java
+//        jstring jClassName = javaEnv->NewStringUTF(class_names[obj.label]);
+//        javaEnv->CallVoidMethod(mainActivityObject, receiveClassNameMethod, jClassName);
+//        javaEnv->DeleteLocalRef(jClassName);
+
+
+//        JNIEXPORT jstring JNICALL Java_com_tencent_yolo_MainActivity_getLabel(JNIEnv* env, jobject thiz, jint label)
+//        {
+//            return env->NewStringUTF(class_names[obj.label]);
+//        }
+
         int baseLine = 0;
         cv::Size label_size = cv::getTextSize(text, cv::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
 
@@ -443,4 +475,12 @@ int Yolo::draw(cv::Mat& rgb, const std::vector<Object>& objects)
     }
 
     return 0;
+}
+extern "C" {
+
+// public native boolean openCamera(int facing);
+JNIEXPORT jstring JNICALL Java_com_tencent_yolov8ncnn_MainActivity_getLabel(JNIEnv *env, jobject thiz) {
+    return env->NewStringUTF(current_label);
+}
+
 }

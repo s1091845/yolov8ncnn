@@ -32,8 +32,11 @@ import android.widget.Spinner;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import android.widget.TextView;
+
 public class MainActivity extends Activity implements SurfaceHolder.Callback
 {
+    private String myVariable = "Hello, World!"; // 這裡是您的變數
     public static final int REQUEST_CAMERA = 100;
 
     private Yolov8Ncnn yolov8ncnn = new Yolov8Ncnn();
@@ -54,6 +57,12 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        // 找到TextView元素
+        TextView textViewVariable = findViewById(R.id.textViewVariable);
+
+        // 設置TextView的文本為變數的值
+        textViewVariable.setText(getLabel());
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         cameraView = (SurfaceView) findViewById(R.id.cameraview);
@@ -66,13 +75,18 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
             @Override
             public void onClick(View arg0) {
 
-                int new_facing = 1 - facing;
+//                int new_facing = 1 - facing;
+//
+//                yolov8ncnn.closeCamera();
+//
+//                yolov8ncnn.openCamera(new_facing);
+//
+//                facing = new_facing;
+                // 找到TextView元素
+                TextView textViewVariable = findViewById(R.id.textViewVariable);
 
-                yolov8ncnn.closeCamera();
-
-                yolov8ncnn.openCamera(new_facing);
-
-                facing = new_facing;
+                // 設置TextView的文本為變數的值
+                textViewVariable.setText(getLabel());
             }
         });
 
@@ -160,4 +174,16 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
 
         yolov8ncnn.closeCamera();
     }
+
+    public native String getLabel();
+
+    static {
+        System.loadLibrary("yolov8ncnn");
+    }
+
+//    public native void receiveClassName(String className);
+
+//    static {
+//        System.loadLibrary("yolov8ncnn");
+//    }
 }
