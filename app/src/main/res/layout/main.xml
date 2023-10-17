@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(づ′▽`)づ地圖"
-            android:onClick="openWebsite"
+            android:onClick="openWebsite_map"
             android:textSize="18sp"
             android:background="@android:drawable/editbox_background_normal"/>
 

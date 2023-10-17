@@ -183,6 +183,17 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
         startActivity(intent);
     }
 
+    public void openWebsite_map(View view) {           //地圖的網頁
+        // 定義您要訪問的網站 URL   這裡開網站
+        String websiteUrlMap = "http://120.110.114.80:9880/map/" + getLabel(); // 將此替換為您的網站 URL
+
+        // 創建一個 Intent 來打開網頁瀏覽器
+        Intent intentMap = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrlMap));
+
+        // 啟動瀏覽器
+        startActivity(intentMap);
+    }
+
     public native String getLabel();
 
     static {
