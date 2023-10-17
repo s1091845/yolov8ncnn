@@ -91,7 +91,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
         spinnerModel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
-            {    spinnerModel.setVisibility(View.GONE);
+            {    //spinnerModel.setVisibility(View.GONE);
                 if (position != current_model)
                 {
                     current_model = position;
@@ -109,7 +109,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
         spinnerCPUGPU.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
-            {      spinnerCPUGPU.setVisibility(View.GONE);
+            {      //spinnerCPUGPU.setVisibility(View.GONE);
                 if (position != current_cpugpu)
                 {
                     current_cpugpu = position;
@@ -174,7 +174,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
 
     public void openWebsite(View view) {
         // 定義您要訪問的網站 URL   這裡開網站
-        String websiteUrl = "http://120.110.114.80:9880/" + getLabel(); // 將此替換為您的網站 URL
+        String websiteUrl = "http://120.110.114.71:2080/" + getLabel(); // 將此替換為您的網站 URL
 
         // 創建一個 Intent 來打開網頁瀏覽器
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
@@ -185,7 +185,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
 
     public void openWebsite_map(View view) {           //地圖的網頁
         // 定義您要訪問的網站 URL   這裡開網站
-        String websiteUrlMap = "http://120.110.114.80:9880/map/" + getLabel(); // 將此替換為您的網站 URL
+        String websiteUrlMap = "http://120.110.114.71:2080/map/" + getLabel(); // 將此替換為您的網站 URL
 
         // 創建一個 Intent 來打開網頁瀏覽器
         Intent intentMap = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrlMap));
