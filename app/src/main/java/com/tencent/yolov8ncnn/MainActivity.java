@@ -22,13 +22,16 @@ import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import android.support.v4.app.ActivityCompat;
@@ -41,7 +44,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback
 {
@@ -58,11 +61,16 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
 
     private SurfaceView cameraView;
 
+    /* new feature */
+    private Button movableButton;
+    private float offsetX, offsetY;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);  //隱藏標題欄
         setContentView(R.layout.main);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

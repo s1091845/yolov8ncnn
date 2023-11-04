@@ -2,8 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@android:color/white"
     android:orientation="vertical">
+
+    <!-- darker_gray -->
+    <!-- 訊息 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/button_background"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="將鏡頭對準藝術品"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:typeface="sans" />
 
 
     <!-- 相機預覽視圖 -->
@@ -13,9 +29,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- 第一行按鈕 -->
-
-    <!-- 第二行 Spinner 選項 -->
+    <!-- Spinner 選項 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,52 +39,38 @@
             android:id="@+id/spinnerModel"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:drawSelectorOnTop="true"
             android:entries="@array/model_array" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="將鏡頭對準藝術品"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp"
-            android:typeface="sans" />
-
-
 
         <Spinner
             android:id="@+id/spinnerCPUGPU"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:drawSelectorOnTop="true"
             android:entries="@array/cpugpu_array" />
     </LinearLayout>
 
-
-
+    <!-- 按鈕區域 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <!-- 切換鏡頭按鈕 -->
         <Button
             android:id="@+id/buttonSwitchCamera"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="0"
             android:background="@android:drawable/editbox_background_normal"
             android:backgroundTint="@android:color/white"
             android:text="切換鏡頭"
             android:textSize="17sp" />
 
+
+        <!-- 查詢作品按鈕
         <Button
             android:id="@+id/button"
             android:layout_width="0dp"
@@ -80,19 +80,79 @@
             android:onClick="openWebsite"
             android:text="查詢作品"
             android:textColor="@android:color/holo_purple"
-            android:textSize="17sp" />
+            android:textSize="20sp" /> -->
+
+        <!-- 新增圖片按鈕
+
+        android:layout_weight="1"-->
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="72dp"
+            android:layout_height="70dp"
+            android:contentDescription="Image Button"
+            android:onClick="openWebsite"
+            android:src="@drawable/sser1"
+            android:text="查詢作品" />
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:onClick="openWebsite"
+            android:text="查詢作品"
+            android:textColor="@android:color/holo_purple"
+            android:textSize="24sp" />
+        <!-- 這是空白 -->
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_background_normal"
+            android:background="@drawable/button_background"
             android:onClick="openWebsite_map"
             android:text="地圖"
             android:textColor="@android:color/holo_purple"
-            android:textSize="17sp" />
-    </LinearLayout>
+            android:textSize="24sp" />
 
+
+        <!-- 地圖按鈕
+       <Button
+           android:id="@+id/button2"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:background="@android:drawable/editbox_background_normal"
+           android:onClick="openWebsite_map"
+           android:text="地圖"
+           android:textColor="@android:color/holo_purple"
+           android:textSize="20sp" />-->
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="83dp"
+            android:layout_height="80dp"
+            android:contentDescription="Image Button"
+            android:onClick="openWebsite_map"
+            android:src="@drawable/smm1"
+            android:text="地圖" />
+
+
+
+
+    </LinearLayout>
 
 </LinearLayout>
