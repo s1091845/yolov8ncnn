@@ -146,7 +146,8 @@ static void generate_proposals(std::vector<GridAndStride> grid_strides, const nc
 {
     const int num_points = grid_strides.size();
 //    const int num_class = 80;
-    const int num_class = 7;
+//    const int num_class = 7;
+    const int num_class = 20;
     const int reg_max_1 = 16;
 
     for (int i = 0; i < num_points; i++)
