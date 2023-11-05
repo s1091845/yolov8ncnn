@@ -386,7 +386,9 @@ int Yolo::draw(cv::Mat& rgb, const std::vector<Object>& objects)
 //    };
 
     static const char* class_names[] = {
-            "bubble", "straw", "sun", "vase", "earring", "mona", "star"
+            "bubble", "straw", "sun", "vase", "earring", "mona", "star", "guitar",
+            "napoleone", "scream", "sadoldman", "crywoman", "portrait", "cigarette",
+            "giant", "sleepdream", "bath", "oath", "lovers", "birthday"
     };
 
     static const unsigned char colors[19][3] = {
