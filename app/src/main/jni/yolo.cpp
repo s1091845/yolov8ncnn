@@ -23,6 +23,7 @@
 #include "cpu.h"
 
 const char *current_label;
+const char *current_label_map;
 
 static float fast_exp(float x)
 {
@@ -432,6 +433,11 @@ int Yolo::draw(cv::Mat& rgb, const std::vector<Object>& objects)
 
         current_label = class_names[obj.label];
 
+        if(current_label == "mona") {
+            current_label = "33";
+            current_label_map = "26";
+        }
+
         int baseLine = 0;
         cv::Size label_size = cv::getTextSize(text, cv::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
 
@@ -457,6 +463,11 @@ extern "C" {
 // public native boolean openCamera(int facing);
 JNIEXPORT jstring JNICALL Java_com_tencent_yolov8ncnn_MainActivity_getLabel(JNIEnv *env, jobject thiz) {
     return env->NewStringUTF(current_label);
+}
+
+// public native boolean openCamera(int facing);
+JNIEXPORT jstring JNICALL Java_com_tencent_yolov8ncnn_MainActivity_getLabelMap(JNIEnv *env, jobject thiz) {
+    return env->NewStringUTF(current_label_map);
 }
 
 }

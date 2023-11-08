@@ -182,7 +182,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
 
     public void openWebsite(View view) {
         // 定義您要訪問的網站 URL   這裡開網站
-        String websiteUrl = "http://120.110.114.71:2080/" + getLabel(); // 將此替換為您的網站 URL
+        String websiteUrl = "http://140.128.9.199/?p=" + getLabel(); // 將此替換為您的網站 URL
 
         // 創建一個 Intent 來打開網頁瀏覽器
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
@@ -193,16 +193,19 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback
 
     public void openWebsite_map(View view) {           //地圖的網頁
         // 定義您要訪問的網站 URL   這裡開網站
-        String websiteUrlMap = "http://120.110.114.71:2080/map/" + getLabel(); // 將此替換為您的網站 URL
+        String websiteUrlMap = "http://140.128.9.199/?p=" + getLabelMap(); // 將此替換為您的網站 URL
 
         // 創建一個 Intent 來打開網頁瀏覽器
         Intent intentMap = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrlMap));
 
         // 啟動瀏覽器
         startActivity(intentMap);
+
     }
 
     public native String getLabel();
+
+    public native String getLabelMap();
 
     static {
         System.loadLibrary("yolov8ncnn");
