@@ -437,6 +437,30 @@ int Yolo::draw(cv::Mat& rgb, const std::vector<Object>& objects)
             current_label = "33";
             current_label_map = "26";
         }
+        else if(current_label == "bubble") {
+            current_label = "66";
+            current_label_map = "68";
+        }
+        else if(current_label == "sun") {
+            current_label = "74";
+            current_label_map = "76";
+        }
+        else if(current_label == "straw") {
+            current_label = "54";
+            current_label_map = "56";
+        }
+        else if(current_label == "vase") {
+            current_label = "70";
+            current_label_map = "72";
+        }
+        else if(current_label == "sun") {
+            current_label = "74";
+            current_label_map = "76";
+        }
+        else if(current_label == "earring") {
+            current_label = "62";
+            current_label_map = "64";
+        }
 
         int baseLine = 0;
         cv::Size label_size = cv::getTextSize(text, cv::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
