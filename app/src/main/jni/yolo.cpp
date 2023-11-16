@@ -441,9 +441,9 @@ int Yolo::draw(cv::Mat& rgb, const std::vector<Object>& objects)
             current_label = "66";
             current_label_map = "68";
         }
-        else if(current_label == "sun") {
-            current_label = "74";
-            current_label_map = "76";
+        else if(current_label == "star") {
+            current_label = "58";
+            current_label_map = "60";
         }
         else if(current_label == "straw") {
             current_label = "54";
@@ -454,8 +454,8 @@ int Yolo::draw(cv::Mat& rgb, const std::vector<Object>& objects)
             current_label_map = "72";
         }
         else if(current_label == "sun") {
-            current_label = "74";
-            current_label_map = "76";
+            current_label = "102";
+            current_label_map = "104";
         }
         else if(current_label == "earring") {
             current_label = "62";
